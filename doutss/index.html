@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div class="search-container">
+        <div class="container-fluid">
+            <form action="/" class="search-form" role="search"><input type="hidden" name="sort" id="sort"><input
+                    type="hidden" name="type" id="type">
+                <div class="row">
+                    <div class="col-sm-1 hidden-xs"><button class="btn-tranparent btn-search" type="submit"><svg
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" class="pxlton pxlton-white"
+                                width="60px" height="60px">
+                                <path
+                                    d="M30 28.6L28.6 30l-8.9-8.9C17.6 23 14.8 24 12 24 5.4 24 0 18.6 0 12S5.4 0 12 0s12 5.4 12 12c0 2.8-1 5.6-2.8 7.8l8.8 8.8zM12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z">
+                                </path>
+                            </svg>
+                        </button></div>
+                    <div class="col-xs-12 visible-xs text-right"><a class="btn-search-close btn-search-toggle"
+                            href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"
+                                class="pxlton pxlton-white" width="30px" height="30px">
+                                <path
+                                    d="M5.7 5L9.9.8c.2-.2.2-.5 0-.7-.2-.1-.5-.1-.7 0L5 4.3.8.1C.6-.1.3 0 .1.2 0 .3 0 .6.1.8L4.3 5 .1 9.2c-.2.2-.2.5 0 .7.2.2.5.2.6 0L5 5.7l4.2 4.2c.2.2.5.2.7 0 .2-.2.2-.5 0-.6L5.7 5z">
+                                </path>
+                            </svg>
+                        </a></div>
+                    <div class="col-sm-10 col-xs-12"><input class="form-control" id="search-input" name="q"
+                            placeholder="Search" type="text"></div>
+                    <div class="col-sm-1 hidden-xs text-right"><a class="btn-search-close btn-search-toggle"
+                            href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"
+                                class="pxlton pxlton-white" width="30px" height="30px">
+                                <path
+                                    d="M5.7 5L9.9.8c.2-.2.2-.5 0-.7-.2-.1-.5-.1-.7 0L5 4.3.8.1C.6-.1.3 0 .1.2 0 .3 0 .6.1.8L4.3 5 .1 9.2c-.2.2-.2.5 0 .7.2.2.5.2.6 0L5 5.7l4.2 4.2c.2.2.5.2.7 0 .2-.2.2-.5 0-.6L5.7 5z">
+                                </path>
+                            </svg>
+                        </a></div>
+                </div>
+            </form>
+            <div class="row search-results">
+                <div class="col-sm-2 col-xs-12">
+                    <ul class="list-unstyled" id="search-facets"></ul>
+                    <div class="algolia-logo"><svg xmlns="http://www.w3.org/2000/svg" width="168" height="24"
+                            class="pxlton">
+                            <g fill="none">
+                                <path fill="#FFF"
+                                    d="M120.925 18.804c-4.386.02-4.386-3.54-4.386-4.106l-.007-13.336 2.675-.424v13.254c0 .322 0 2.358 1.718 2.364v2.248zm-10.846-2.18c.821 0 1.43-.047 1.855-.129v-2.719a6.334 6.334 0 0 0-1.574-.199 5.7 5.7 0 0 0-.897.069 2.699 2.699 0 0 0-.814.24c-.24.116-.439.28-.582.491-.15.212-.219.335-.219.656 0 .628.219.991.616 1.23s.938.362 1.615.362zm-.233-9.7c.883 0 1.629.109 2.231.328.602.218 1.088.525 1.444.915.363.396.609.922.76 1.483.157.56.232 1.175.232 1.85v6.874a32.5 32.5 0 0 1-1.868.314c-.834.123-1.772.185-2.813.185-.69 0-1.327-.069-1.895-.198a4.001 4.001 0 0 1-1.471-.636 3.085 3.085 0 0 1-.951-1.134c-.226-.465-.343-1.12-.343-1.803 0-.656.13-1.073.384-1.525a3.24 3.24 0 0 1 1.047-1.106c.445-.287.95-.492 1.532-.615a8.8 8.8 0 0 1 1.82-.185 8.404 8.404 0 0 1 1.972.24v-.438c0-.307-.035-.6-.11-.874a1.88 1.88 0 0 0-.384-.73 1.784 1.784 0 0 0-.724-.493 3.164 3.164 0 0 0-1.143-.205c-.616 0-1.177.075-1.69.164a7.735 7.735 0 0 0-1.26.307l-.321-2.192c.335-.117.834-.233 1.478-.349a10.98 10.98 0 0 1 2.073-.178zm52.842 9.626c.822 0 1.43-.048 1.854-.13V13.7a6.347 6.347 0 0 0-1.574-.199c-.294 0-.595.021-.896.069a2.7 2.7 0 0 0-.814.24 1.46 1.46 0 0 0-.582.491c-.15.212-.218.335-.218.656 0 .628.218.991.615 1.23.404.245.938.362 1.615.362zm-.226-9.694c.883 0 1.629.108 2.231.327.602.219 1.088.526 1.444.915.355.39.609.923.759 1.483a6.8 6.8 0 0 1 .233 1.852v6.873c-.41.088-1.034.19-1.868.314-.834.123-1.772.184-2.813.184-.69 0-1.327-.068-1.895-.198a4.001 4.001 0 0 1-1.471-.635 3.085 3.085 0 0 1-.951-1.134c-.226-.465-.343-1.12-.343-1.804 0-.656.13-1.073.384-1.524.26-.45.608-.82 1.047-1.107.445-.286.95-.491 1.532-.614a8.803 8.803 0 0 1 2.751-.13c.329.034.671.096 1.04.185v-.437a3.3 3.3 0 0 0-.109-.875 1.873 1.873 0 0 0-.384-.731 1.784 1.784 0 0 0-.724-.492 3.165 3.165 0 0 0-1.143-.205c-.616 0-1.177.075-1.69.164a7.75 7.75 0 0 0-1.26.307l-.321-2.193c.335-.116.834-.232 1.478-.348a11.633 11.633 0 0 1 2.073-.177zm-8.034-1.271a1.626 1.626 0 0 1-1.628-1.62c0-.895.725-1.62 1.628-1.62.904 0 1.63.725 1.63 1.62 0 .895-.733 1.62-1.63 1.62zm1.348 13.22h-2.689V7.27l2.69-.423v11.956zm-4.714 0c-4.386.02-4.386-3.54-4.386-4.107l-.008-13.336 2.676-.424v13.254c0 .322 0 2.358 1.718 2.364v2.248zm-8.698-5.903c0-1.156-.253-2.119-.746-2.788-.493-.677-1.183-1.01-2.067-1.01-.882 0-1.574.333-2.065 1.01-.493.676-.733 1.632-.733 2.788 0 1.168.246 1.953.74 2.63.492.683 1.183 1.018 2.066 1.018.882 0 1.574-.342 2.067-1.019.492-.683.738-1.46.738-2.63zm2.737-.007c0 .902-.13 1.584-.397 2.33a5.52 5.52 0 0 1-1.128 1.906 4.986 4.986 0 0 1-1.752 1.223c-.685.286-1.739.45-2.265.45-.528-.006-1.574-.157-2.252-.45a5.096 5.096 0 0 1-1.744-1.223c-.487-.527-.863-1.162-1.137-1.906a6.345 6.345 0 0 1-.41-2.33c0-.902.123-1.77.397-2.508a5.554 5.554 0 0 1 1.15-1.892 5.133 5.133 0 0 1 1.75-1.216c.679-.287 1.425-.423 2.232-.423.808 0 1.553.142 2.237.423a4.88 4.88 0 0 1 1.753 1.216 5.644 5.644 0 0 1 1.135 1.892c.287.738.431 1.606.431 2.508zm-20.138 0c0 1.12.246 2.363.738 2.882.493.52 1.13.78 1.91.78.424 0 .828-.062 1.204-.178.377-.116.677-.253.917-.417V9.33a10.476 10.476 0 0 0-1.766-.226c-.971-.028-1.71.37-2.23 1.004-.513.636-.773 1.75-.773 2.788zm7.438 5.274c0 1.824-.466 3.156-1.404 4.004-.936.846-2.367 1.27-4.296 1.27-.705 0-2.17-.137-3.34-.396l.431-2.118c.98.205 2.272.26 2.95.26 1.074 0 1.84-.219 2.299-.656.459-.437.684-1.086.684-1.948v-.437a8.07 8.07 0 0 1-1.047.397c-.43.13-.93.198-1.492.198-.739 0-1.41-.116-2.018-.349a4.206 4.206 0 0 1-1.567-1.025c-.431-.45-.774-1.017-1.013-1.694-.24-.677-.363-1.885-.363-2.773 0-.834.13-1.88.384-2.577.26-.696.629-1.298 1.129-1.796.493-.498 1.095-.881 1.8-1.162a6.605 6.605 0 0 1 2.428-.457c.87 0 1.67.109 2.45.24.78.129 1.444.265 1.985.415V18.17zM6.972 6.677v1.627c-.712-.446-1.52-.67-2.425-.67-.585 0-1.045.13-1.38.391a1.24 1.24 0 0 0-.502 1.03c0 .425.164.765.494 1.02.33.256.835.532 1.516.83.447.192.795.356 1.045.495.25.138.537.332.862.582.324.25.563.548.718.894.154.345.23.741.23 1.188 0 .947-.334 1.691-1.004 2.234-.67.542-1.537.814-2.601.814-1.18 0-2.16-.229-2.936-.686v-1.708c.84.628 1.814.942 2.92.942.585 0 1.048-.136 1.388-.407.34-.271.51-.646.51-1.125 0-.287-.1-.55-.302-.79-.203-.24-.42-.42-.655-.542-.234-.123-.585-.29-1.053-.503a61.27 61.27 0 0 1-.582-.271 13.67 13.67 0 0 1-.55-.287 4.275 4.275 0 0 1-.567-.351 6.92 6.92 0 0 1-.455-.4c-.18-.17-.31-.34-.39-.51-.08-.17-.155-.37-.224-.598a2.553 2.553 0 0 1-.104-.742c0-.915.333-1.638.998-2.17.664-.532 1.523-.798 2.576-.798.968 0 1.793.17 2.473.51zm7.468 5.696v-.287c-.022-.607-.187-1.088-.495-1.444-.309-.357-.75-.535-1.324-.535-.532 0-.99.194-1.373.583-.382.388-.622.949-.717 1.683h3.909zm1.005 2.792v1.404c-.596.34-1.383.51-2.362.51-1.255 0-2.255-.377-3-1.132-.744-.755-1.116-1.744-1.116-2.968 0-1.297.34-2.316 1.021-3.055.68-.74 1.548-1.11 2.6-1.11 1.033 0 1.852.323 2.458.966.606.644.91 1.572.91 2.784 0 .33-.033.676-.096 1.038h-5.314c.107.702.405 1.239.894 1.611.49.372 1.106.558 1.85.558.862 0 1.58-.202 2.155-.606zm6.605-1.77h-1.212c-.596 0-1.045.116-1.349.35-.303.234-.454.532-.454.894 0 .372.117.664.35.877.235.213.575.32 1.022.32.51 0 .912-.142 1.204-.424.293-.281.44-.651.44-1.108v-.91zm-4.068-2.554V9.325c.627-.361 1.457-.542 2.489-.542 2.116 0 3.175 1.026 3.175 3.08V17h-1.548v-.957c-.415.68-1.143 1.02-2.186 1.02-.766 0-1.38-.22-1.843-.661-.462-.442-.694-1.003-.694-1.684 0-.776.293-1.38.878-1.81.585-.431 1.404-.647 2.457-.647h1.34V11.8c0-.554-.133-.971-.399-1.253-.266-.282-.707-.423-1.324-.423a4.07 4.07 0 0 0-2.345.718zm9.333-1.93v1.42c.394-1 1.101-1.5 2.123-1.5.148 0 .313.016.494.048v1.531a1.885 1.885 0 0 0-.75-.143c-.542 0-.989.24-1.34.718-.351.479-.527 1.048-.527 1.707V17h-1.563V8.91h1.563zm5.01 4.084c.022.82.272 1.492.75 2.019.479.526 1.15.79 2.01.79.639 0 1.235-.176 1.788-.527v1.404c-.521.319-1.186.479-1.995.479-1.265 0-2.276-.4-3.031-1.197-.755-.798-1.133-1.792-1.133-2.984 0-1.16.38-2.151 1.14-2.975.761-.825 1.79-1.237 3.088-1.237.702 0 1.346.149 1.93.447v1.436a3.242 3.242 0 0 0-1.77-.495c-.84 0-1.513.266-2.019.798-.505.532-.758 1.213-.758 2.042zM40.24 5.72v4.579c.458-1 1.293-1.5 2.505-1.5.787 0 1.42.245 1.899.734.479.49.718 1.17.718 2.042V17h-1.564v-5.106c0-.553-.14-.98-.422-1.284-.282-.303-.652-.455-1.11-.455-.531 0-1.002.202-1.411.606-.41.405-.615 1.022-.615 1.851V17h-1.563V5.72h1.563zm14.966 10.02c.596 0 1.096-.253 1.5-.758.404-.506.606-1.157.606-1.955 0-.915-.202-1.62-.606-2.114-.404-.495-.92-.742-1.548-.742-.553 0-1.05.224-1.491.67-.442.447-.662 1.133-.662 2.058 0 .958.212 1.67.638 2.138.425.469.946.703 1.563.703zM53.004 5.72v4.42c.574-.894 1.388-1.341 2.44-1.341 1.022 0 1.857.383 2.506 1.149.649.766.973 1.781.973 3.047 0 1.138-.309 2.109-.925 2.912-.617.803-1.463 1.205-2.537 1.205-1.075 0-1.894-.447-2.457-1.34V17h-1.58V5.72h1.58zm9.908 11.104l-3.223-7.913h1.739l1.005 2.632 1.26 3.415c.096-.32.48-1.458 1.15-3.415l.909-2.632h1.66l-2.92 7.866c-.777 2.074-1.963 3.11-3.559 3.11a2.92 2.92 0 0 1-.734-.079v-1.34c.17.042.351.064.543.064 1.032 0 1.755-.57 2.17-1.708z">
+                                </path>
+                                <path fill="#5468FF"
+                                    d="M78.988.938h16.594a2.968 2.968 0 0 1 2.966 2.966V20.5a2.967 2.967 0 0 1-2.966 2.964H78.988a2.967 2.967 0 0 1-2.966-2.964V3.897A2.961 2.961 0 0 1 78.988.938z">
+                                </path>
+                                <path fill="#FFF"
+                                    d="M89.632 5.967v-.772a.978.978 0 0 0-.978-.977h-2.28a.978.978 0 0 0-.978.977v.793c0 .088.082.15.171.13a7.127 7.127 0 0 1 1.984-.28c.65 0 1.295.088 1.917.259.082.02.164-.04.164-.13m-6.248 1.01l-.39-.389a.977.977 0 0 0-1.382 0l-.465.465a.973.973 0 0 0 0 1.38l.383.383c.062.061.15.047.205-.014.226-.307.472-.601.746-.874.281-.28.568-.526.883-.751.068-.042.075-.137.02-.2m4.16 2.453v3.341c0 .096.104.165.192.117l2.97-1.537c.068-.034.089-.117.055-.184a3.695 3.695 0 0 0-3.08-1.866c-.068 0-.136.054-.136.13m0 8.048a4.489 4.489 0 0 1-4.49-4.482 4.488 4.488 0 0 1 4.49-4.482 4.488 4.488 0 0 1 4.489 4.482 4.484 4.484 0 0 1-4.49 4.482m0-10.85a6.363 6.363 0 1 0 0 12.729 6.37 6.37 0 0 0 6.372-6.368 6.358 6.358 0 0 0-6.371-6.36">
+                                </path>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-xs-12">
+                    <div id="search-results"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 margin-bottom-50 margin-top-20" id="infinite-load"><a
+                        class="btn btn-block btn-xl btn-link" id="next-page" href="#">Next page</a></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/template" data-template="searchitem">
+  <div class="col-xs-12 col-sm-3 state-active">
+    <div class="media freebie-object">
+      <a class="freebie-image" href="/items/${slug}" itemprop="url">
+        <img itemprop="image" alt="User avatars preview picture" class="js-progressive-img media-object freebie-preview is-loaded" src="${cover_photo}">
+      </a>
+      <div class="freebie-body">
+        <div class="freebie-card-header">
+          <a class="freebie-name" href="/items/${slug}" itemprop="name" title="User avatars">${title}</a>
+        </div>
+        <div class="freebie-author">by ${shopName} in <a class="text-dark" href="/items/of/category/${categorySlug}">${categoryTitle}</a></div>
+        <div class="freebie-card-footer margin-top-10">
+          <a class="btn btn-download btn-success btn-block btn-sm" rel="nofollow noopener noreferrer" target="_self" data-on="click" data-event-category="Download" data-event-action="click" data-event-label="downloaded item" data-event-value="19" href="/items/${slug}">
+            <span class="product-floating-price">$${price}</span>
+            <span class="text-container text-center">
+              <span class="text">Download</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+    <script type="text/template" data-template="searchfacet">
+  <li>
+    <a href="#" class="facet-link ${class}" data-facet="${facet}">
+      <h5>
+        ${facet}
+        <small>${count}</small>
+      </h5>
+    </a>
+  </li>
+</script>
+    <div class="container content-container" style="height: auto !important;">
+        <div class="margin-top-40" style="height: auto !important;">
+            <div style="height: auto !important;">
+                <div class="product-head margin-bottom-40">
+                    <div class="margin-xs-bottom-20">
+                        <h1 class="product-title no-margin"><strong>Doutss Landing Page</strong></h1>
+                        <div><span class="text-light">By</span> <a class="text-dark"
+                                href="https://www.epicpxls.com/shops/realvjy">realvjy</a> <span
+                                class="text-light">in</span> <strong><a class="text-dark"
+                                    href="/items/of/category/templates">Templates</a></strong> </div>
+                    </div>
+                    <div class="product-buttons">
+                        <div class="is-relative inline-block"><a class="btn btn-download btn-success btn-xl btn-special"
+                                rel="nofollow noopener noreferrer" target="_self" data-on="click"
+                                data-event-category="Download" data-event-action="click"
+                                data-event-label="downloaded item" data-event-value="0"
+                                href="https://www.epicpxls.com/items/doutss-landing-page/download"><span
+                                    class="product-floating-price">$0</span><span class="text-container"><span
+                                        class="text">Download</span><small
+                                        class="block remote-download">(remote)</small></span></a></div>
+                    </div>
+                </div>
+                <div class="row margin-bottom-80" style="height: auto !important;">
+                    <div class="col-sm-9">
+                        <div class="row margin-bottom-30">
+                            <div class="margin-bottom-30 col-sm-6"><a class="ajax-dialog item-photo-link png"
+                                    data-href="/items/doutss-landing-page/carousel.dialog?active=0" data-slide-to="0"
+                                    data-toggle="modal" href="#" rel="noopener nofollow noopener noreferrer">
+                                    <picture>
+                                        <source
+                                            media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/2f48078bb5f03a66c838c26001fc4bd1.png"
+                                            data-srcset="https://imgproxy.epicpxls.com/cnthfgIfseRVP3xjLyz7I7MGY2Hte1O0BOlThVqpj-M/rs:fill:818:614:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by8yZjQ4MDc4/YmI1ZjAzYTY2Yzgz/OGMyNjAwMWZjNGJk/MS5wbmc.jpg 2x"
+                                            srcset="https://imgproxy.epicpxls.com/cnthfgIfseRVP3xjLyz7I7MGY2Hte1O0BOlThVqpj-M/rs:fill:818:614:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by8yZjQ4MDc4/YmI1ZjAzYTY2Yzgz/OGMyNjAwMWZjNGJk/MS5wbmc.jpg 2x">
+                                        <source
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/2f48078bb5f03a66c838c26001fc4bd1.png"
+                                            data-srcset="https://imgproxy.epicpxls.com/QvQUhZmAvNlGPOARk7B_DjeXVQpvmxpouwsExHgfuo8/rs:fill:409:307:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by8yZjQ4MDc4/YmI1ZjAzYTY2Yzgz/OGMyNjAwMWZjNGJk/MS5wbmc.jpg"
+                                            srcset="https://imgproxy.epicpxls.com/QvQUhZmAvNlGPOARk7B_DjeXVQpvmxpouwsExHgfuo8/rs:fill:409:307:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by8yZjQ4MDc4/YmI1ZjAzYTY2Yzgz/OGMyNjAwMWZjNGJk/MS5wbmc.jpg">
+                                        <img data-src="https://imgproxy.epicpxls.com/QvQUhZmAvNlGPOARk7B_DjeXVQpvmxpouwsExHgfuo8/rs:fill:409:307:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by8yZjQ4MDc4/YmI1ZjAzYTY2Yzgz/OGMyNjAwMWZjNGJk/MS5wbmc.jpg"
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/2f48078bb5f03a66c838c26001fc4bd1.png"
+                                            width="409" height="307" alt="Doutss Landing Page"
+                                            class="item-photo lazy initial loaded"
+                                            src="https://imgproxy.epicpxls.com/QvQUhZmAvNlGPOARk7B_DjeXVQpvmxpouwsExHgfuo8/rs:fill:409:307:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by8yZjQ4MDc4/YmI1ZjAzYTY2Yzgz/OGMyNjAwMWZjNGJk/MS5wbmc.jpg"
+                                            data-was-processed="true"></picture>
+                                </a></div>
+                            <div class="margin-bottom-30 col-sm-6"><a class="ajax-dialog item-photo-link png"
+                                    data-href="/items/doutss-landing-page/carousel.dialog?active=1" data-slide-to="1"
+                                    data-toggle="modal" href="#" rel="noopener nofollow noopener noreferrer">
+                                    <picture>
+                                        <source
+                                            media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/94111c3c7ad2b3109f1b9c6f91500a8c.png"
+                                            data-srcset="https://imgproxy.epicpxls.com/5mTDLAmGO2qcy8T4TQ2Qv1eqHfBtoYZ_BAzlUIYrnQY/rs:fill:818:614:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by85NDExMWMz/YzdhZDJiMzEwOWYx/YjljNmY5MTUwMGE4/Yy5wbmc.jpg 2x"
+                                            srcset="https://imgproxy.epicpxls.com/5mTDLAmGO2qcy8T4TQ2Qv1eqHfBtoYZ_BAzlUIYrnQY/rs:fill:818:614:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by85NDExMWMz/YzdhZDJiMzEwOWYx/YjljNmY5MTUwMGE4/Yy5wbmc.jpg 2x">
+                                        <source
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/94111c3c7ad2b3109f1b9c6f91500a8c.png"
+                                            data-srcset="https://imgproxy.epicpxls.com/LNE0BAq8dPBWnhoRtoduuYs3ujnVSUMo4TR3NTEj3Sw/rs:fill:409:307:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by85NDExMWMz/YzdhZDJiMzEwOWYx/YjljNmY5MTUwMGE4/Yy5wbmc.jpg"
+                                            srcset="https://imgproxy.epicpxls.com/LNE0BAq8dPBWnhoRtoduuYs3ujnVSUMo4TR3NTEj3Sw/rs:fill:409:307:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by85NDExMWMz/YzdhZDJiMzEwOWYx/YjljNmY5MTUwMGE4/Yy5wbmc.jpg">
+                                        <img data-src="https://imgproxy.epicpxls.com/LNE0BAq8dPBWnhoRtoduuYs3ujnVSUMo4TR3NTEj3Sw/rs:fill:409:307:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by85NDExMWMz/YzdhZDJiMzEwOWYx/YjljNmY5MTUwMGE4/Yy5wbmc.jpg"
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/94111c3c7ad2b3109f1b9c6f91500a8c.png"
+                                            width="409" height="307" alt="Doutss Landing Page"
+                                            class="item-photo lazy initial loaded"
+                                            src="https://imgproxy.epicpxls.com/LNE0BAq8dPBWnhoRtoduuYs3ujnVSUMo4TR3NTEj3Sw/rs:fill:409:307:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by85NDExMWMz/YzdhZDJiMzEwOWYx/YjljNmY5MTUwMGE4/Yy5wbmc.jpg"
+                                            data-was-processed="true"></picture>
+                                </a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 break-word">
+                                <div class="meta-label">Description</div>
+                                <p></p>
+                                <p>Have a look at this colorful landing page created with Sketch. Doutss Landing
+                                    Page
+                                    comes with clean design, well organized elements and editable content. Feel free
+                                    to
+                                    download and use it in your own projects.</p>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="height: auto !important; min-height: 0px !important;">
+                        <ul class="list-unstyled product-meta-list" style="height: auto !important;">
+                            <li>
+                                <div class="meta-label">Author</div>
+                                <div class="meta-author"><a href="/shops/realvjy"><img class="avatar avatar-xs"
+                                            style="width: 32px; height: 32px; line-height: 32px;" height="32" width="32"
+                                            alt="realvjy Avatar"
+                                            src="https://gravatar.com/avatar/756f7a9cb359a72024c61884061dfdbe.png?s=32"></a>
+                                    <div class="margin-left-10"><a class="block"
+                                            href="/shops/realvjy"><strong>realvjy</strong></a>
+                                        <div class="text-light small"> <span class="followers-count"
+                                                data-id="realvjy">4</span> followers </div>
+                                    </div><a class="btn btn-sm btn-primary btn-special left-auto btn-80 follow"
+                                        data-toggle-class="btn-primary btn-grey" data-rel="noopener nofollow"
+                                        data-toggle-href="https://www.epicpxls.com/shops/realvjy/unfollow"
+                                        data-toggle-text="Unfollow" rel="nofollow" data-method="put"
+                                        href="https://www.epicpxls.com/shops/realvjy/follow">Follow</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="meta-label">Popularity</div>
+                                <div class="product-stats">
+                                    <div class="strong" title="Views"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                                            height="18" class="pxlton">
+                                            <path
+                                                d="M9 2C5.737 2 2.475 4.333 0 9c2.475 4.667 5.737 7 9 7 3.264 0 6.525-2.332 9-7-2.475-4.667-5.736-7-9-7zm0 12c-2.372 0-4.779-1.809-6.703-5C4.221 5.809 6.628 4 9 4s4.779 1.809 6.703 5c-1.924 3.191-4.331 5-6.703 5zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 4a1 1 0 1 1 0-2 1 1 0 1 1 0 2z">
+                                            </path>
+                                        </svg>
+                                        2.93K</div>
+                                    <div class="strong margin-left-20" title="Downloads"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="pxlton">
+                                            <path
+                                                d="M10 14.156l1.293-1.356a.975.975 0 0 1 1.406 0c.4.399.4 1 0 1.399l-3.012 3c-.201.201-.501.301-.703.301s-.502-.1-.703-.301l-3.011-3a.964.964 0 0 1 0-1.399.975.975 0 0 1 1.406 0L8 14.125V8.5c0-.6.383-1 .984-1S10 7.9 10 8.5v5.656zM6.471 3.788A5.496 5.496 0 0 1 17 6c0 2.866-2.2 5.193-5 5.449V9.5s-.008-.044.257-.082c.054-.007.103-.024.154-.038A3.501 3.501 0 0 0 11.5 2.5c-1.807 0-3.277 1.375-3.463 3.133 0 0-.066.566-.59.743-.629.213-1.026-.282-1.026-.282A2 2 0 1 0 5 9.5h1v2H5a4 4 0 0 1 0-8l1.471.288z">
+                                            </path>
+                                        </svg>
+                                        270</div><a class="strong vote margin-left-20" rel="noopener nofollow"
+                                        title="Add to favorites" data-toggle-class="is-active"
+                                        data-toggle-href="/items/doutss-landing-page/dislike"
+                                        data-id="doutss-landing-page" data-method="put"
+                                        href="/items/doutss-landing-page/like"><svg xmlns="http://www.w3.org/2000/svg"
+                                            width="18" height="18" class="pxlton">
+                                            <path
+                                                d="M12.5 4C13.879 4 15 5.346 15 7c0 3.154-3.818 5.713-6 6.801C6.816 12.711 3 10.152 3 7c0-1.654 1.122-3 2.5-3 1.078 0 2.691 2.062 2.691 2.062a1 1 0 0 0 1.618 0S11.266 4 12.5 4m0-2c-1.414 0-2.676.866-3.5 2-.825-1.134-2.085-2-3.5-2C3.015 2 1 4.238 1 7c0 5.719 8 9 8 9s8-3.281 8-9c0-2.762-2.016-5-4.5-5z">
+                                            </path>
+                                        </svg>
+                                        <span class="likes-count" data-id="doutss-landing-page">4</span> </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="meta-label">Product details</div>
+                                <div class="inline-icon margin-bottom-15" title="Activated at"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        class="pxlton margin-right-10">
+                                        <path
+                                            d="M9.5 10H9V6.5a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5H7v2h-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM15 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm-1 13.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5v9z"
+                                            fill="#858F98" fill-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Jul 24, 2017</span></div>
+                                <div class="inline-icon margin-bottom-15" title="License"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        class="pxlton margin-right-10">
+                                        <path fill="none" d="M0 0h16v16H0z"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd" fill="#858F98"
+                                            d="M4 12h8v-2H4v2zm3-8H4v2h3V4zM4 9h8V7H4v2zm10.707-4.707l-4-4A.997.997 0 0 0 10 0H2a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5a.997.997 0 0 0-.293-.707zM13 14H3V2h6v3a1 1 0 0 0 1 1h3v8z">
+                                        </path>
+                                    </svg>
+                                    <a href="https://www.epicpxls.com/licensing">Basic License</a></div>
+                            </li>
+                            <li>
+                                <div class="meta-label">Tags</div><a class="label-tag"
+                                    href="/items/tagged-app">app</a><a class="label-tag"
+                                    href="/items/tagged-collor">collor</a><a class="label-tag"
+                                    href="/items/tagged-flat">flat</a><a class="label-tag"
+                                    href="/items/tagged-doutss">doutss</a><a class="label-tag"
+                                    href="/items/tagged-landing">landing</a><a class="label-tag"
+                                    href="/items/tagged-page">page</a><a class="label-tag"
+                                    href="/items/tagged-sketch">sketch</a><a class="label-tag"
+                                    href="/items/tagged-social">social</a><a class="label-tag"
+                                    href="/items/tagged-free">free</a>
+                            </li>
+                            <li>
+                                <div class="meta-label">Spread the word</div>
+                                <div class="row">
+                                    <div class="col-sm-6"><a class="margin-right-10"
+                                            href="https://twitter.com/intent/tweet?text=Enjoy%20this%20freebie%3A%20Doutss%20Landing%20Page%20by%20%40realvjy%21&amp;via=CoEpic&amp;url=https://www.epicpxls.com/items/doutss-landing-page"
+                                            target="_blank" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg"
+                                                width="16px" height="16px" class="pxlton pxlton-twitter">
+                                                <path
+                                                    d="M17 3.912a6.377 6.377 0 0 1-1.885.529 3.36 3.36 0 0 0 1.443-1.861 6.438 6.438 0 0 1-2.086.815 3.238 3.238 0 0 0-2.396-1.062c-1.812 0-3.281 1.507-3.281 3.366 0 .264.028.52.085.767-2.728-.141-5.146-1.48-6.767-3.519a3.436 3.436 0 0 0-.443 1.695c0 1.167.579 2.197 1.46 2.801a3.209 3.209 0 0 1-1.487-.42v.042c0 1.631 1.131 2.992 2.635 3.3-.275.08-.566.119-.865.119-.212 0-.418-.021-.618-.061.418 1.338 1.63 2.311 3.065 2.337a6.482 6.482 0 0 1-4.859 1.395 9.143 9.143 0 0 0 5.031 1.512c6.039 0 9.34-5.129 9.34-9.577 0-.146-.002-.293-.008-.436A6.769 6.769 0 0 0 17 3.912">
+                                                </path>
+                                            </svg>
+                                        </a><a class="js-share-on-fb margin-right-10"
+                                            data-photo="https://items.epicpxls.com/uploads/photo/2f48078bb5f03a66c838c26001fc4bd1.png"
+                                            data-title="Doutss Landing Page" href="#" title="Facebook"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"
+                                                class="pxlton pxlton-fb">
+                                                <path
+                                                    d="M9.546 17H1.883A.883.883 0 0 1 1 16.117V1.883C1 1.396 1.396 1 1.883 1h14.234c.487 0 .883.396.883.883v14.234a.884.884 0 0 1-.883.883h-4.078v-6.196h2.08l.312-2.415h-2.392V6.848c0-.699.195-1.176 1.197-1.176h1.279v-2.16c-.222-.029-.98-.095-1.863-.095-1.844 0-3.106 1.125-3.106 3.192V8.39H7.461v2.415h2.085V17z">
+                                                </path>
+                                            </svg>
+                                        </a><a class="js-share-on-pinterest"
+                                            data-photo="https://items.epicpxls.com/uploads/photo/2f48078bb5f03a66c838c26001fc4bd1.png"
+                                            data-title="Doutss Landing Page" href="#"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"
+                                                class="pxlton pxlton-pinterest">
+                                                <path
+                                                    d="M9 1a8 8 0 0 0-8 8 8.003 8.003 0 0 0 4.789 7.327c-.021-.558-.004-1.229.139-1.837l1.029-4.359s-.255-.51-.255-1.266c0-1.186.688-2.071 1.543-2.071.728 0 1.079.546 1.079 1.201 0 .731-.467 1.825-.707 2.838-.2.85.426 1.541 1.263 1.541 1.516 0 2.536-1.946 2.536-4.253 0-1.752-1.18-3.065-3.328-3.065-2.426 0-3.938 1.809-3.938 3.83 0 .697.205 1.189.526 1.569.148.176.169.245.114.446-.037.146-.125.502-.162.643-.054.201-.218.275-.4.199-1.118-.454-1.638-1.679-1.638-3.055 0-2.272 1.916-4.998 5.717-4.998 3.055 0 5.066 2.211 5.066 4.583 0 3.139-1.745 5.482-4.318 5.482-.862 0-1.676-.467-1.953-.996 0 0-.465 1.844-.562 2.199-.17.615-.502 1.232-.806 1.713A8 8 0 1 0 9 1">
+                                                </path>
+                                            </svg>
+                                        </a></div>
+                                    <div class="col-sm-6 text-right"></div>
+                                </div>
+                            </li>
+                            <li class="margin-top-30" style="height: auto !important;">
+                                <div class="meta-label">Don't want to see ads? <a
+                                        href="https://www.epicpxls.com/subscribe">Subscribe</a></div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+                                            async="async" defer="defer" data-turbolinks-track="reload"></script><ins
+                                            class="adsbygoogle" data-ad-client="ca-pub-9406099090537147"
+                                            data-ad-format="rectangle" data-ad-slot="5566477322" data-adtest="off"
+                                            data-full-width-responsive="true" style="display: block; height: 250px;"
+                                            data-adsbygoogle-status="done"><ins id="aswift_0_expand"
+                                                style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:263px;background-color:transparent;"><ins
+                                                    id="aswift_0_anchor"
+                                                    style="display: block; border: none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 263px; background-color: transparent; overflow: visible;"><iframe
+                                                        id="aswift_0" name="aswift_0"
+                                                        style="left:0;position:absolute;top:0;border:0;width:263px;height:250px;"
+                                                        sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+                                                        width="263" height="250" frameborder="0"
+                                                        src="https://googleads.g.doubleclick.net/pagead/ads?guci=2.2.0.0.2.2.0.0&amp;client=ca-pub-9406099090537147&amp;output=html&amp;h=250&amp;slotname=5566477322&amp;adk=1186957730&amp;adf=276540572&amp;pi=t.ma~as.5566477322&amp;w=263&amp;fwrn=4&amp;fwrnh=100&amp;lmt=1604507559&amp;rafmt=3&amp;psa=0&amp;format=263x250&amp;url=https%3A%2F%2Fwww.epicpxls.com%2Fitems%2Fdoutss-landing-page&amp;flash=0&amp;adtest=off&amp;fwr=0&amp;fwrattr=true&amp;rpe=1&amp;resp_fmts=1&amp;wgl=1&amp;tt_state=W3siaXNzdWVyT3JpZ2luIjoiaHR0cHM6Ly9hZHNlcnZpY2UuZ29vZ2xlLmNvbSIsInN0YXRlIjowfSx7Imlzc3Vlck9yaWdpbiI6Imh0dHBzOi8vYXR0ZXN0YXRpb24uYW5kcm9pZC5jb20iLCJzdGF0ZSI6MH1d&amp;dt=1604507558955&amp;bpp=9&amp;bdt=2293&amp;idt=699&amp;shv=r20201029&amp;cbv=r20190131&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;correlator=8449243589666&amp;frm=20&amp;pv=2&amp;ga_vid=325180315.1604507560&amp;ga_sid=1604507560&amp;ga_hid=798235262&amp;ga_fc=0&amp;iag=0&amp;icsg=537512&amp;dssz=30&amp;mdo=0&amp;mso=0&amp;u_tz=-720&amp;u_his=1&amp;u_java=0&amp;u_h=768&amp;u_w=1366&amp;u_ah=728&amp;u_aw=1366&amp;u_cd=24&amp;u_nplug=3&amp;u_nmime=4&amp;adx=983&amp;ady=753&amp;biw=1349&amp;bih=657&amp;scr_x=0&amp;scr_y=0&amp;eid=44726949&amp;oid=3&amp;pvsid=498645947998733&amp;pem=559&amp;ref=https%3A%2F%2Fwww.pinterest.com%2F&amp;rx=0&amp;eae=0&amp;fc=896&amp;brdim=0%2C0%2C0%2C0%2C1366%2C0%2C1366%2C728%2C1366%2C657&amp;vis=1&amp;rsz=%7C%7CeEbr%7C&amp;abl=CS&amp;pfx=0&amp;fu=8320&amp;bc=31&amp;ifi=1&amp;uci=a!1&amp;btvi=1&amp;fsb=1&amp;xpc=wooc3i55a8&amp;p=https%3A//www.epicpxls.com&amp;dtd=773"
+                                                        marginwidth="0" marginheight="0" vspace="0" hspace="0"
+                                                        allowtransparency="true" scrolling="no" allowfullscreen="true"
+                                                        data-google-container-id="a!1"
+                                                        data-google-query-id="CIDh1bmo6ewCFdDs7Qodr8MIyQ"
+                                                        data-load-complete="true"></iframe></ins></ins></ins>
+                                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <script type="application/ld+json">
+{"@context":"http://schema.org","@type":"Product","name":"Doutss Landing Page","image":["https://items.epicpxls.com/uploads/photo/2f48078bb5f03a66c838c26001fc4bd1.png","https://items.epicpxls.com/uploads/photo/94111c3c7ad2b3109f1b9c6f91500a8c.png"],"description":"Have a look at this colorful landing page created with Sketch. Doutss Landing Page comes with clean design, well organized elements and editable content. Feel free to download and use it in your own projects.","productID":768,"releaseDate":"2017-07-24","offers":{"@type":"Offer","category":"Templates","url":"https://www.epicpxls.com/items/doutss-landing-page","priceCurrency":"USD","price":0,"availability":"InStock","priceValidUntil":"2022-11-04","seller":{"@type":"Person","url":"https://www.epicpxls.com/shops/realvjy","name":"realvjy"}}}
+</script>
+                <div id="related-items">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3>Related Items</h3>
+                        </div>
+                    </div>
+                    <div class="row freebies">
+                        <div class="col-xs-6 col-sm-3 state-active">
+                            <div class="media freebie-object"><a class="freebie-image"
+                                    href="https://www.epicpxls.com/items/business-illustration-kit" style="      background-color: #e1e1e2
+      background-repeat: repeat-x;
+      background-image: -webkit-linear-gradient(45deg, #e1e1e2, #616364);
+      background-image: -o-linear-gradient(45deg, #e1e1e2, #616364);
+      background-image: linear-gradient(45deg, #e1e1e2, #616364);
+">
+                                    <picture>
+                                        <source
+                                            media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/4e377229b696675849c8e3af3dcedf7d"
+                                            data-srcset="https://imgproxy.epicpxls.com/KzoKbkmZpQUBKdU8jHP-lqfsjgw1iUlxBG2-b89yKns/rs:fill:526:394:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by80ZTM3NzIy/OWI2OTY2NzU4NDlj/OGUzYWYzZGNlZGY3/ZA.jpg 2x"
+                                            srcset="https://imgproxy.epicpxls.com/KzoKbkmZpQUBKdU8jHP-lqfsjgw1iUlxBG2-b89yKns/rs:fill:526:394:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by80ZTM3NzIy/OWI2OTY2NzU4NDlj/OGUzYWYzZGNlZGY3/ZA.jpg 2x">
+                                        <source
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/4e377229b696675849c8e3af3dcedf7d"
+                                            data-srcset="https://imgproxy.epicpxls.com/p0XrpSm8-yRcpdDddGThddObflL5c65gBHlKmt1ikvs/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by80ZTM3NzIy/OWI2OTY2NzU4NDlj/OGUzYWYzZGNlZGY3/ZA.jpg"
+                                            srcset="https://imgproxy.epicpxls.com/p0XrpSm8-yRcpdDddGThddObflL5c65gBHlKmt1ikvs/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by80ZTM3NzIy/OWI2OTY2NzU4NDlj/OGUzYWYzZGNlZGY3/ZA.jpg">
+                                        <img data-src="https://imgproxy.epicpxls.com/p0XrpSm8-yRcpdDddGThddObflL5c65gBHlKmt1ikvs/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by80ZTM3NzIy/OWI2OTY2NzU4NDlj/OGUzYWYzZGNlZGY3/ZA.jpg"
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/4e377229b696675849c8e3af3dcedf7d"
+                                            width="263" height="197" alt="Business Illustration Kit preview picture"
+                                            class="js-progressive-img media-object freebie-preview lazy is-loaded loaded"
+                                            src="https://imgproxy.epicpxls.com/p0XrpSm8-yRcpdDddGThddObflL5c65gBHlKmt1ikvs/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by80ZTM3NzIy/OWI2OTY2NzU4NDlj/OGUzYWYzZGNlZGY3/ZA.jpg"
+                                            data-was-processed="true"></picture>
+                                </a>
+                                <div class="freebie-body">
+                                    <div class="freebie-card-header"><a class="freebie-name"
+                                            href="https://www.epicpxls.com/items/business-illustration-kit"
+                                            title="Business Illustration Kit">Business Illustration Kit</a><a
+                                            href="https://www.epicpxls.com/items?type=premium"><span
+                                                class="label label-premium margin-left-10">Premium</span></a></div>
+                                    <div class="freebie-author">by Nmc2010 in <a class="text-dark"
+                                            href="/items/of/category/illustrations">Illustrations</a></div>
+                                    <div class="freebie-card-footer"><a
+                                            class="btn btn-sm btn-green btn-block download-item freebie-cta"
+                                            data-on="click" data-event-category="Download" data-event-action="click"
+                                            data-event-label="download item index" data-event-value="15"
+                                            href="https://www.epicpxls.com/items/business-illustration-kit">Download</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="application/ld+json">
+{"@context":"http://schema.org","@type":"Product","name":"Business Illustration Kit","image":["https://items.epicpxls.com/uploads/photo/4e377229b696675849c8e3af3dcedf7d"],"description":"Business Illustration Kit – 10 Unique line illustrations for web and mobile designs \r\nwhich help you to create beautiful designs.\r\n\r\nAll illustrations are 100% customizable and are created using vector shapes.\r\n\r\nYou can change color and size to match your requirement. \r\n\r\nEditable Text, Before you open the Logo Files, you must install the font first in the \"Readme.txt\"\r\n\r\n\r\nFEATURES:\r\n------------------- \r\n\r\n- RGB Color\r\n- 100% Vector\r\n- Curva Editable\r\n- Easy Scalable\r\n- Fully Layered\r\n- Well Structured Layer\r\n- Always Use Free Fonts\r\n- Fully Text Editable\r\n- Preview - PNG File\r\n\r\nFile Included:\r\n------------------- \r\n- Ai logo files (Vector-Fully Text Editable) \r\n- Eps 10EPS (Vector – Openable with many vector based graphic programs such as Illustrator, CorelDraw)\r\n- 10 PSD Onboarding App Screens\r\n- 10 PSD Flat Landing Page\r\n- Font Info - \"Readme.txt\"\r\n- Logo.PNG File (1000x1000px) \r\n\r\nFONTS USE :\r\n------------------- \r\n+ Roboto (https://www.dafont.com/search.php?q=Roboto)","productID":11386,"releaseDate":"2020-11-02","offers":{"@type":"Offer","category":"Illustrations","url":"https://www.epicpxls.com/items/business-illustration-kit","priceCurrency":"USD","price":15,"availability":"InStock","priceValidUntil":"2022-11-04","seller":{"@type":"Person","url":"https://www.epicpxls.com/shops/nmc2010","name":"Nmc2010"}}}
+</script>
+                        <div class="col-xs-6 col-sm-3 state-active">
+                            <div class="media freebie-object"><a class="freebie-image"
+                                    href="https://www.epicpxls.com/items/losta-landing-pages-exploration" style="      background-color: #f5f1cf
+      background-repeat: repeat-x;
+      background-image: -webkit-linear-gradient(45deg, #f5f1cf, #eea872);
+      background-image: -o-linear-gradient(45deg, #f5f1cf, #eea872);
+      background-image: linear-gradient(45deg, #f5f1cf, #eea872);
+">
+                                    <picture>
+                                        <source
+                                            media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/bb0da5ea333e216c3edf8a847a41dd11"
+                                            data-srcset="https://imgproxy.epicpxls.com/VwlBeLPUU-MH4CzyDVOj1oPa6byMrt6CcqkSKT6DjDc/rs:fill:526:394:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by9iYjBkYTVl/YTMzM2UyMTZjM2Vk/ZjhhODQ3YTQxZGQx/MQ.jpg 2x"
+                                            srcset="https://imgproxy.epicpxls.com/VwlBeLPUU-MH4CzyDVOj1oPa6byMrt6CcqkSKT6DjDc/rs:fill:526:394:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by9iYjBkYTVl/YTMzM2UyMTZjM2Vk/ZjhhODQ3YTQxZGQx/MQ.jpg 2x">
+                                        <source
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/bb0da5ea333e216c3edf8a847a41dd11"
+                                            data-srcset="https://imgproxy.epicpxls.com/ZGQzEJxBxxb90beWbRs1m_7TwLkChRbw6sdUAKb8qx8/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by9iYjBkYTVl/YTMzM2UyMTZjM2Vk/ZjhhODQ3YTQxZGQx/MQ.jpg"
+                                            srcset="https://imgproxy.epicpxls.com/ZGQzEJxBxxb90beWbRs1m_7TwLkChRbw6sdUAKb8qx8/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by9iYjBkYTVl/YTMzM2UyMTZjM2Vk/ZjhhODQ3YTQxZGQx/MQ.jpg">
+                                        <img data-src="https://imgproxy.epicpxls.com/ZGQzEJxBxxb90beWbRs1m_7TwLkChRbw6sdUAKb8qx8/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by9iYjBkYTVl/YTMzM2UyMTZjM2Vk/ZjhhODQ3YTQxZGQx/MQ.jpg"
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/bb0da5ea333e216c3edf8a847a41dd11"
+                                            width="263" height="197"
+                                            alt="Losta Landing Pages Exploration preview picture"
+                                            class="js-progressive-img media-object freebie-preview lazy is-loaded loaded"
+                                            src="https://imgproxy.epicpxls.com/ZGQzEJxBxxb90beWbRs1m_7TwLkChRbw6sdUAKb8qx8/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by9iYjBkYTVl/YTMzM2UyMTZjM2Vk/ZjhhODQ3YTQxZGQx/MQ.jpg"
+                                            data-was-processed="true"></picture>
+                                </a>
+                                <div class="freebie-body">
+                                    <div class="freebie-card-header"><a class="freebie-name"
+                                            href="https://www.epicpxls.com/items/losta-landing-pages-exploration"
+                                            title="Losta Landing Pages Exploration">Losta Landing Pages
+                                            Exploration</a><a href="https://www.epicpxls.com/items?type=premium"><span
+                                                class="label label-premium margin-left-10">Premium</span></a></div>
+                                    <div class="freebie-author">by Forhadul Alam08 in <a class="text-dark"
+                                            href="/items/of/category/templates">Templates</a></div>
+                                    <div class="freebie-card-footer"><a
+                                            class="btn btn-sm btn-green btn-block download-item freebie-cta"
+                                            data-on="click" data-event-category="Download" data-event-action="click"
+                                            data-event-label="download item index" data-event-value="10"
+                                            href="https://www.epicpxls.com/items/losta-landing-pages-exploration">Download</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="application/ld+json">
+{"@context":"http://schema.org","@type":"Product","name":"Losta Landing Pages Exploration","image":["https://items.epicpxls.com/uploads/photo/bb0da5ea333e216c3edf8a847a41dd11","https://items.epicpxls.com/uploads/photo/9cef08084a13c3b960aa18c5988e7f4c"],"description":"This is a Web UI exploration for Restaurant landing pages. Hope you guys will like it.This file Adobe XD is easy to use, Well organized. You can be used for other projects like Website or Landing pages.\r\n\r\n📩 If you have any query, let me know at: forhadul.alam08@gmail.com","productID":11384,"releaseDate":"2020-11-02","offers":{"@type":"Offer","category":"Templates","url":"https://www.epicpxls.com/items/losta-landing-pages-exploration","priceCurrency":"USD","price":10,"availability":"InStock","priceValidUntil":"2022-11-04","seller":{"@type":"Person","url":"https://www.epicpxls.com/shops/forhadul-alam08","name":"Forhadul Alam08"}}}
+</script>
+                        <div class="col-xs-6 col-sm-3 state-active">
+                            <div class="media freebie-object"><a class="freebie-image"
+                                    href="https://www.epicpxls.com/items/tevago-travel-tourism-agency-landing-pages"
+                                    style="      background-color: #d3e9e7
+      background-repeat: repeat-x;
+      background-image: -webkit-linear-gradient(45deg, #d3e9e7, #808f88);
+      background-image: -o-linear-gradient(45deg, #d3e9e7, #808f88);
+      background-image: linear-gradient(45deg, #d3e9e7, #808f88);
+">
+                                    <picture>
+                                        <source
+                                            media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/707482ada45d55c7923057521ebb1a81"
+                                            data-srcset="https://imgproxy.epicpxls.com/DfDcwgSV7TtgJWvBwuSIQYj8Ao1TZuC418CblCsmmYo/rs:fill:526:394:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by83MDc0ODJh/ZGE0NWQ1NWM3OTIz/MDU3NTIxZWJiMWE4/MQ.jpg 2x"
+                                            srcset="https://imgproxy.epicpxls.com/DfDcwgSV7TtgJWvBwuSIQYj8Ao1TZuC418CblCsmmYo/rs:fill:526:394:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by83MDc0ODJh/ZGE0NWQ1NWM3OTIz/MDU3NTIxZWJiMWE4/MQ.jpg 2x">
+                                        <source
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/707482ada45d55c7923057521ebb1a81"
+                                            data-srcset="https://imgproxy.epicpxls.com/6DYPsKn3j5vh6-Wo-ybZUUVrptmBKYb71SyXE27bCo0/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by83MDc0ODJh/ZGE0NWQ1NWM3OTIz/MDU3NTIxZWJiMWE4/MQ.jpg"
+                                            srcset="https://imgproxy.epicpxls.com/6DYPsKn3j5vh6-Wo-ybZUUVrptmBKYb71SyXE27bCo0/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by83MDc0ODJh/ZGE0NWQ1NWM3OTIz/MDU3NTIxZWJiMWE4/MQ.jpg">
+                                        <img data-src="https://imgproxy.epicpxls.com/6DYPsKn3j5vh6-Wo-ybZUUVrptmBKYb71SyXE27bCo0/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by83MDc0ODJh/ZGE0NWQ1NWM3OTIz/MDU3NTIxZWJiMWE4/MQ.jpg"
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/707482ada45d55c7923057521ebb1a81"
+                                            width="263" height="197"
+                                            alt="Tevago-Travel &amp; tourism agency landing pages preview picture"
+                                            class="js-progressive-img media-object freebie-preview lazy is-loaded loaded"
+                                            src="https://imgproxy.epicpxls.com/6DYPsKn3j5vh6-Wo-ybZUUVrptmBKYb71SyXE27bCo0/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by83MDc0ODJh/ZGE0NWQ1NWM3OTIz/MDU3NTIxZWJiMWE4/MQ.jpg"
+                                            data-was-processed="true"></picture>
+                                </a>
+                                <div class="freebie-body">
+                                    <div class="freebie-card-header"><a class="freebie-name"
+                                            href="https://www.epicpxls.com/items/tevago-travel-tourism-agency-landing-pages"
+                                            title="Tevago-Travel &amp; tourism agency landing pages">Tevago-Travel
+                                            &amp;
+                                            tourism agency landing pages</a><a
+                                            href="https://www.epicpxls.com/items?type=premium"><span
+                                                class="label label-premium margin-left-10">Premium</span></a></div>
+                                    <div class="freebie-author">by Forhadul Alam08 in <a class="text-dark"
+                                            href="/items/of/category/templates">Templates</a></div>
+                                    <div class="freebie-card-footer"><a
+                                            class="btn btn-sm btn-green btn-block download-item freebie-cta"
+                                            data-on="click" data-event-category="Download" data-event-action="click"
+                                            data-event-label="download item index" data-event-value="10"
+                                            href="https://www.epicpxls.com/items/tevago-travel-tourism-agency-landing-pages">Download</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="application/ld+json">
+{"@context":"http://schema.org","@type":"Product","name":"Tevago-Travel \u0026 tourism agency landing pages","image":["https://items.epicpxls.com/uploads/photo/707482ada45d55c7923057521ebb1a81","https://items.epicpxls.com/uploads/photo/307075c8e0f932a82d3bedd883eac56a"],"description":"his is a Web UI exploration for a Tevago-Travel \u0026 tourism agency landing pages. Hope you guys will like it. This file Adobe XD is easy to use, Well organized. You can be used for other projects like Website or Landing pages.\r\n\r\n📩 If you have any query, let me know at: forhadul.alam08@gmail.com","productID":11383,"releaseDate":"2020-11-02","offers":{"@type":"Offer","category":"Templates","url":"https://www.epicpxls.com/items/tevago-travel-tourism-agency-landing-pages","priceCurrency":"USD","price":10,"availability":"InStock","priceValidUntil":"2022-11-04","seller":{"@type":"Person","url":"https://www.epicpxls.com/shops/forhadul-alam08","name":"Forhadul Alam08"}}}
+</script>
+                        <div class="col-xs-6 col-sm-3 state-active">
+                            <div class="media freebie-object"><a class="freebie-image"
+                                    href="https://www.epicpxls.com/items/jobi-landing-pages" style="      background-color: #deebe6
+      background-repeat: repeat-x;
+      background-image: -webkit-linear-gradient(45deg, #deebe6, #736e6a);
+      background-image: -o-linear-gradient(45deg, #deebe6, #736e6a);
+      background-image: linear-gradient(45deg, #deebe6, #736e6a);
+">
+                                    <picture>
+                                        <source
+                                            media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/7b08585fea5c75c8faec7a2853cde418"
+                                            data-srcset="https://imgproxy.epicpxls.com/SGl3uwqmMzMroyJYbgI21YDTBE4IUDj4PgjlINSgIGc/rs:fill:526:394:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by83YjA4NTg1/ZmVhNWM3NWM4ZmFl/YzdhMjg1M2NkZTQx/OA.jpg 2x"
+                                            srcset="https://imgproxy.epicpxls.com/SGl3uwqmMzMroyJYbgI21YDTBE4IUDj4PgjlINSgIGc/rs:fill:526:394:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by83YjA4NTg1/ZmVhNWM3NWM4ZmFl/YzdhMjg1M2NkZTQx/OA.jpg 2x">
+                                        <source
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/7b08585fea5c75c8faec7a2853cde418"
+                                            data-srcset="https://imgproxy.epicpxls.com/3m2TuYVMJmQp8u1o4E1SleQWegC9XU0i-U2wAmOOWmU/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by83YjA4NTg1/ZmVhNWM3NWM4ZmFl/YzdhMjg1M2NkZTQx/OA.jpg"
+                                            srcset="https://imgproxy.epicpxls.com/3m2TuYVMJmQp8u1o4E1SleQWegC9XU0i-U2wAmOOWmU/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by83YjA4NTg1/ZmVhNWM3NWM4ZmFl/YzdhMjg1M2NkZTQx/OA.jpg">
+                                        <img data-src="https://imgproxy.epicpxls.com/3m2TuYVMJmQp8u1o4E1SleQWegC9XU0i-U2wAmOOWmU/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by83YjA4NTg1/ZmVhNWM3NWM4ZmFl/YzdhMjg1M2NkZTQx/OA.jpg"
+                                            data-original-url="https://items.epicpxls.com/uploads/photo/7b08585fea5c75c8faec7a2853cde418"
+                                            width="263" height="197" alt="Jobi. Landing Pages preview picture"
+                                            class="js-progressive-img media-object freebie-preview lazy is-loaded loaded"
+                                            src="https://imgproxy.epicpxls.com/3m2TuYVMJmQp8u1o4E1SleQWegC9XU0i-U2wAmOOWmU/rs:fill:263:197:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by83YjA4NTg1/ZmVhNWM3NWM4ZmFl/YzdhMjg1M2NkZTQx/OA.jpg"
+                                            data-was-processed="true"></picture>
+                                </a>
+                                <div class="freebie-body">
+                                    <div class="freebie-card-header"><a class="freebie-name"
+                                            href="https://www.epicpxls.com/items/jobi-landing-pages"
+                                            title="Jobi. Landing Pages">Jobi. Landing Pages</a><a
+                                            href="https://www.epicpxls.com/items?type=premium"><span
+                                                class="label label-premium margin-left-10">Premium</span></a></div>
+                                    <div class="freebie-author">by Forhadul Alam08 in <a class="text-dark"
+                                            href="/items/of/category/templates">Templates</a></div>
+                                    <div class="freebie-card-footer"><a
+                                            class="btn btn-sm btn-green btn-block download-item freebie-cta"
+                                            data-on="click" data-event-category="Download" data-event-action="click"
+                                            data-event-label="download item index" data-event-value="10"
+                                            href="https://www.epicpxls.com/items/jobi-landing-pages">Download</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="application/ld+json">
+{"@context":"http://schema.org","@type":"Product","name":"Jobi. Landing Pages","image":["https://items.epicpxls.com/uploads/photo/7b08585fea5c75c8faec7a2853cde418","https://items.epicpxls.com/uploads/photo/b63257b7552dbb4fe6c5c122bdab43f9","https://items.epicpxls.com/uploads/photo/70e9fd74fe9108c26a1ccede369503b1"],"description":"This is a Web UI exploration for a Jobs Portal Landing Page. Hope you guys will like it. This file Adobe XD is easy to use, Well organized. You can be used for other projects like Website or Landing pages.\r\n\r\n📩 If you have any query, let me know at: forhadul.alam08@gmail.com","productID":11382,"releaseDate":"2020-11-02","offers":{"@type":"Offer","category":"Templates","url":"https://www.epicpxls.com/items/jobi-landing-pages","priceCurrency":"USD","price":10,"availability":"InStock","priceValidUntil":"2022-11-04","seller":{"@type":"Person","url":"https://www.epicpxls.com/shops/forhadul-alam08","name":"Forhadul Alam08"}}}
+</script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pxls-footer text-white">
+        <div class="footer-container margin-bottom-30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12 info-block">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-6">
+                                <h5 class="margin-bottom-20 margin-top-0">JOIN US</h5>
+                                <ul class="footer-navigation list-unstyled margin-top-10">
+                                    <li><a href="/subscribe"><span data-hover="BECOME A SUBSCRIBER">BECOME A
+                                                SUBSCRIBER</span></a></li>
+                                    <li><a href="/open-shop"><span data-hover="OPEN A SHOP">OPEN A SHOP</span></a>
+                                    </li>
+                                    <li><a href="/embed"><span data-hover="EMBED PRODUCT">EMBED PRODUCT</span></a>
+                                    </li>
+                                    <li><a href="https://blog.epicpxls.com"><span data-hover="OUR BLOG">OUR
+                                                BLOG</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <h5 class="margin-bottom-20 margin-top-0">COMPANY</h5>
+                                <ul class="footer-navigation list-unstyled margin-top-10">
+                                    <li><a rel="nofollow" href="mailto:contact@epicpxls.com"><span
+                                                data-hover="CONTACT US">CONTACT US</span></a></li>
+                                    <li><a target="_blank" rel="noopener" href="https://status.epicpxls.com/"><span
+                                                data-hover="STATUS">STATUS</span></a></li>
+                                    <li><a href="/terms"><span data-hover="TERMS OF SERVICE">TERMS OF
+                                                SERVICE</span></a>
+                                    </li>
+                                    <li><a href="/privacy"><span data-hover="PRIVACY POLICY">PRIVACY
+                                                POLICY</span></a>
+                                    </li>
+                                    <li><a href="/licensing"><span data-hover="LICENSING">LICENSING</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12">
+                                <div class="sell-products margin-top-30">
+                                    <div class="product-button"><a class="btn btn-primary"
+                                            href="https://www.epicpxls.com/open-shop">SELL PRODUCTS</a></div>
+                                    <div class="product-text">
+                                        <p>Earn 85% and</p>
+                                        <p>more on all sales</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12 margin-top-60">
+                                <div class="sell-products">
+                                    <div class="product-button"><a class="btn submit-btn"
+                                            href="https://www.epicpxls.com/items/new">+ SUBMIT</a></div>
+                                    <div class="product-text">
+                                        <p>Upload your products and put them up</p>
+                                        <p>for sale at whatever price you want.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12 text-right">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3 class="margin-top-0">Join our newsletter and receive an instant gift</h3>
+                                <div id="newsletter">
+                                    <form name="newsletter-form" id="#newsletter-content" novalidate="novalidate"
+                                        class="simple_form newsletter" action="/newsletter" accept-charset="UTF-8"
+                                        method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden"
+                                            name="authenticity_token"
+                                            value="RkhclkPJ9+Ask6NZi9vSBJNlJbN6bPXCEtex8ya8VdrUVp/tRnNNaHWGwq/PdVCSytwu7Wyuh2itw59P8c0DKA==">
+                                        <div class="input-group"><input class="form-control" id="newsletter_email"
+                                                name="newsletter[email]"
+                                                placeholder="Enter your email to get on our mailing list"
+                                                type="email"><span class="input-group-btn"><button class="btn btn-link"
+                                                    type="button"></button></span></div>
+                                    </form>
+                                </div>
+                                <h5 class="info">YOU WILL RECIEVE FREE AND PREMIUM PRODUCTS EACH WEEK.</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="counter-container">
+                                    <div class="counter">
+                                        <div class="downloads-counter"><span class="letter">8</span><span
+                                                class="letter">4</span><span class="letter">7</span><span
+                                                class="letter">8</span><span class="letter">8</span><span
+                                                class="letter">3</span><span class="letter">0</span></div>
+                                    </div>
+                                    <h5>DOWNLOADS &amp; COUNTING</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="counter-container">
+                                    <div class="counter">
+                                        <div class="active-members-counter"><span class="letter">4</span><span
+                                                class="letter">7</span><span class="letter">5</span><span
+                                                class="letter">2</span><span class="letter">9</span><span
+                                                class="letter">0</span><span class="letter">0</span></div>
+                                    </div>
+                                    <h5>ACTIVE MEMBERS</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin-top-5">
+                            <div class="col-xs-12">
+                                <div class="social-info">JOIN <a target="blank" rel="noopener"
+                                        href="http://epic-digital-creators.epicpxls.com/">EPIC-DIGITAL-CREATORS
+                                    </a>ON
+                                    SLACK <a href="https://slack.com/" rel="noopener" target="_blank">
+                                        <picture>
+                                            <source
+                                                media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                                data-original-url="footer/slack.png"
+                                                data-srcset="//www.epicpxls.com/assets/footer/slack-a018cc8f2513de36a7d39dfa04f75e222f075c9baf88fdc2234469b052c72eca.png">
+                                            <source data-original-url="footer/slack.png"
+                                                data-srcset="//www.epicpxls.com/assets/footer/slack-a018cc8f2513de36a7d39dfa04f75e222f075c9baf88fdc2234469b052c72eca.png">
+                                            <img data-src="//www.epicpxls.com/assets/footer/slack-a018cc8f2513de36a7d39dfa04f75e222f075c9baf88fdc2234469b052c72eca.png"
+                                                data-original-url="footer/slack.png" alt="Slack icon"
+                                                class="slack lazy"></picture>
+                                    </a>OR CONNECT THROUGH <a href="https://dribbble.com/epiccoders" rel="noopener"
+                                        target="_blank">
+                                        <picture>
+                                            <source
+                                                media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                                data-original-url="footer/dribbble_icon.png"
+                                                data-srcset="//www.epicpxls.com/assets/footer/dribbble_icon-8b983289aca2a6bdfbb9c049f4a6f7b44c8aafc63e12282bbec0ce9a4067f97a.png">
+                                            <source data-original-url="footer/dribbble_icon.png"
+                                                data-srcset="//www.epicpxls.com/assets/footer/dribbble_icon-8b983289aca2a6bdfbb9c049f4a6f7b44c8aafc63e12282bbec0ce9a4067f97a.png">
+                                            <img data-src="//www.epicpxls.com/assets/footer/dribbble_icon-8b983289aca2a6bdfbb9c049f4a6f7b44c8aafc63e12282bbec0ce9a4067f97a.png"
+                                                data-original-url="footer/dribbble_icon.png" alt="Dribbble icon"
+                                                class=" lazy"></picture>
+                                    </a><a href="https://twitter.com/epicpxls" rel="noopener" target="_blank">
+                                        <picture>
+                                            <source
+                                                media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                                data-original-url="footer/twitter_icon.png"
+                                                data-srcset="//www.epicpxls.com/assets/footer/twitter_icon-da92195df95952c4cd17e1bee236448b8c3b18dbe9da5b57ac91da0225e8f9ae.png">
+                                            <source data-original-url="footer/twitter_icon.png"
+                                                data-srcset="//www.epicpxls.com/assets/footer/twitter_icon-da92195df95952c4cd17e1bee236448b8c3b18dbe9da5b57ac91da0225e8f9ae.png">
+                                            <img data-src="//www.epicpxls.com/assets/footer/twitter_icon-da92195df95952c4cd17e1bee236448b8c3b18dbe9da5b57ac91da0225e8f9ae.png"
+                                                data-original-url="footer/twitter_icon.png" alt="Twitter icon"
+                                                class=" lazy"></picture>
+                                    </a><a href="https://www.facebook.com/epicpxls.market" rel="noopener"
+                                        target="_blank">
+                                        <picture>
+                                            <source
+                                                media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                                data-original-url="footer/facebook_icon.png"
+                                                data-srcset="//www.epicpxls.com/assets/footer/facebook_icon-15c840657769160958905610fe0c03fcd48ebdafbebc4297bfcf8d326ade8172.png">
+                                            <source data-original-url="footer/facebook_icon.png"
+                                                data-srcset="//www.epicpxls.com/assets/footer/facebook_icon-15c840657769160958905610fe0c03fcd48ebdafbebc4297bfcf8d326ade8172.png">
+                                            <img data-src="//www.epicpxls.com/assets/footer/facebook_icon-15c840657769160958905610fe0c03fcd48ebdafbebc4297bfcf8d326ade8172.png"
+                                                data-original-url="footer/facebook_icon.png" alt="Facebook icon"
+                                                class=" lazy"></picture>
+                                    </a><a href="https://www.instagram.com/epicpxls/" rel="noopener" target="_blank">
+                                        <picture>
+                                            <source
+                                                media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                                data-original-url="footer/insta_icon.png"
+                                                data-srcset="//www.epicpxls.com/assets/footer/insta_icon-50b197c07695bee6f1a925f4f502b7faf2debbc1e43a053a0c5bcd822ce122fc.png">
+                                            <source data-original-url="footer/insta_icon.png"
+                                                data-srcset="//www.epicpxls.com/assets/footer/insta_icon-50b197c07695bee6f1a925f4f502b7faf2debbc1e43a053a0c5bcd822ce122fc.png">
+                                            <img data-src="//www.epicpxls.com/assets/footer/insta_icon-50b197c07695bee6f1a925f4f502b7faf2debbc1e43a053a0c5bcd822ce122fc.png"
+                                                data-original-url="footer/insta_icon.png" alt="Instagram icon"
+                                                class=" lazy"></picture>
+                                    </a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12 info-block">
+                        <div class="divider"></div>
+                        <div class="divider-section">
+                            <div class="payments">Secure <picture>
+                                    <source
+                                        media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                        data-original-url="footer/lock-light.png"
+                                        data-srcset="//www.epicpxls.com/assets/footer/lock-light-323a4d6e3719593a7b8366301afbe2480b917a0c091e965424c6da02e5dd5683.png">
+                                    <source data-original-url="footer/lock-light.png"
+                                        data-srcset="//www.epicpxls.com/assets/footer/lock-light-323a4d6e3719593a7b8366301afbe2480b917a0c091e965424c6da02e5dd5683.png">
+                                    <img data-src="//www.epicpxls.com/assets/footer/lock-light-323a4d6e3719593a7b8366301afbe2480b917a0c091e965424c6da02e5dd5683.png"
+                                        data-original-url="footer/lock-light.png" alt="Lock icon" class="lock lazy">
+                                </picture>payments with <a target="_blank" rel="noopener"
+                                    href="https://www.braintreepayments.com/">
+                                    <picture>
+                                        <source
+                                            media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                            data-original-url="footer/bt-logo-black.png"
+                                            data-srcset="//www.epicpxls.com/assets/footer/bt-logo-black-a65a1e09def8909556945c2edd1e4f0186187ba0589e21649d016e4223c2b72f.png">
+                                        <source data-original-url="footer/bt-logo-black.png"
+                                            data-srcset="//www.epicpxls.com/assets/footer/bt-logo-black-a65a1e09def8909556945c2edd1e4f0186187ba0589e21649d016e4223c2b72f.png">
+                                        <img data-src="//www.epicpxls.com/assets/footer/bt-logo-black-a65a1e09def8909556945c2edd1e4f0186187ba0589e21649d016e4223c2b72f.png"
+                                            data-original-url="footer/bt-logo-black.png" alt="Braintree icon"
+                                            class="braintree lazy"></picture>
+                                </a>&amp; <a target="_blank" rel="noopener" href="https://www.paypal.com/">
+                                    <picture>
+                                        <source
+                                            media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"
+                                            data-original-url="footer/paypal-logo-footer.png"
+                                            data-srcset="//www.epicpxls.com/assets/footer/paypal-logo-footer-e18d47d8cff21cf437f842dfcccc5b8beff85d1c30c78509009505e142c08ef4.png">
+                                        <source data-original-url="footer/paypal-logo-footer.png"
+                                            data-srcset="//www.epicpxls.com/assets/footer/paypal-logo-footer-e18d47d8cff21cf437f842dfcccc5b8beff85d1c30c78509009505e142c08ef4.png">
+                                        <img data-src="//www.epicpxls.com/assets/footer/paypal-logo-footer-e18d47d8cff21cf437f842dfcccc5b8beff85d1c30c78509009505e142c08ef4.png"
+                                            data-original-url="footer/paypal-logo-footer.png" alt="Paypal icon"
+                                            class="paypal lazy"></picture>
+                                </a></div>
+                            <div class="short-info">Made in Timisoara ∙ Copyright © 2020 ∙ Created by <a target="_blank"
+                                    rel="noopener" href="http://www.epiccoders.co"><span data-hover="Epic Coders">Epic
+                                        Coders</span></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="//browser.sentry-cdn.com/5.7.0/bundle.min.js"
+        integrity="sha384-pHnCJ3bbzJ+LzI19wAdyBvGAjJ5vNAC59uxeRpw5WpgkSlZUQstEADxkSbBnI95q" crossorigin="anonymous"
+        data-turbolinks-eval="false" defer="defer"></script>
+    <script>document.addEventListener('readystatechange', event => {
+            // When window loaded ( external resources are loaded too- `css`,`src`, etc...)
+            if (event.target.readyState === "complete") {
+                Sentry.init({
+                    dsn: "https://9280bdf89a2d49acb8b926d766999c48@sentry.io/134280",
+                    environment: "production",
+                    whitelistUrls: [
+                        /!localhost:3000/,
+                        /!epicpxls.com/,
+                        /!epicpxls-staging.herokuapp.com/
+                    ],
+                });
+
+                function handleRouteError(err) {
+                    Sentry.captureException(err);
+                    Sentry.showReportDialog();
+                }
+
+                function errorHandler(error, data, level) {
+                    if (typeof Sentry === 'undefined')
+                        return;
+                    level = level || 'info';
+                    data = data || {};
+                    Sentry.withScope(scope => {
+                        scope.setExtra('details', data);
+                        scope.setLevel(level);
+                        Sentry.captureMessage(error);
+                    });
+                }
+            }
+        });</script>
+    <script>document.addEventListener('DOMContentLoaded', function () {
+            $crisp = [];
+            CRISP_WEBSITE_ID = "b86fe31a-441e-444a-a439-52e20ef23052";
+            (function () {
+                d = document;
+                s = d.createElement("script");
+                s.src = "https://client.crisp.im/l.js";
+                s.async = 1;
+                d.getElementsByTagName("head")[0].appendChild(s);
+            })();
+        });</script>
+    <script>document.addEventListener('DOMContentLoaded', function () {
+            woopra.track();
+            fbq('track', "PageView");
+        });</script><noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=283029148743084&ev=PageView&noscript=1" /</noscript>
+        <div id="fb-root" class=" fb_reset">
+            <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
+                <div></div>
+            </div>
+        </div>
+        <script>document.addEventListener('DOMContentLoaded', function () {
+                window.fbAsyncInit = function () {
+                    FB.init({
+                        appId: "743621695752945",
+                        xfbml: true,
+                        version: 'v2.8'
+                    });
+                    FB.AppEvents.logPageView();
+                };
+
+                (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) { return; }
+                    js = d.createElement(s); js.id = id; js.async = 1;
+                    js.src = "//connect.facebook.net/en_US/sdk.js?xfbml=false";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            });</script>
+        <script>document.addEventListener('DOMContentLoaded', function () {
+                window.twttr = (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0],
+                        t = window.twttr || {};
+                    if (d.getElementById(id)) return t;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.async = 1;
+                    js.src = "https://platform.twitter.com/widgets.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+
+                    t._e = [];
+                    t.ready = function (f) {
+                        t._e.push(f);
+                    };
+
+                    return t;
+                }(document, "script", "twitter-wjs"));
+            });</script>
+        <div class="modal show fade-bottom" id="hire-us">
+            <div class="modal-dialog hire-us" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row align-middle">
+                            <div class="col-sm-8 col-xs-12">
+                                <div><strong>Looking for a designer or developer?</strong></div><small
+                                    class="text-muted">Contact us and we'll send you a quote.</small>
+                            </div>
+                            <div class="col-sm-3 col-xs-12"><button class="btn btn-green btn-block btn-rounded"
+                                    onclick="$crisp.push(['do', 'chat:open'])">Hire Us</button></div>
+                            <div class="col-sm-1 col-xs-12"><button aria-hidden="true" class="close hire-us-close"
+                                    data-dismiss="modal" type="button"><span>x</span></button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done"
+            style="display: none !important;"><ins id="aswift_1_expand"
+                style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><ins
+                    id="aswift_1_anchor"
+                    style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe
+                        id="aswift_1" name="aswift_1"
+                        style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;"
+                        sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+                        frameborder="0"
+                        src="https://googleads.g.doubleclick.net/pagead/ads?guci=2.2.0.0.2.2.0.0&amp;client=ca-pub-9406099090537147&amp;output=html&amp;adk=1812271804&amp;adf=3025194257&amp;lmt=1604507559&amp;plat=1%3A32776%2C2%3A32776%2C9%3A32776%2C10%3A32%2C11%3A32%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1081344%2C32%3A32%2C40%3A32&amp;format=0x0&amp;url=https%3A%2F%2Fwww.epicpxls.com%2Fitems%2Fdoutss-landing-page&amp;ea=0&amp;flash=0&amp;adtest=off&amp;pra=7&amp;wgl=1&amp;tt_state=W3siaXNzdWVyT3JpZ2luIjoiaHR0cHM6Ly9hZHNlcnZpY2UuZ29vZ2xlLmNvbSIsInN0YXRlIjowfSx7Imlzc3Vlck9yaWdpbiI6Imh0dHBzOi8vYXR0ZXN0YXRpb24uYW5kcm9pZC5jb20iLCJzdGF0ZSI6MH1d&amp;dt=1604507558964&amp;bpp=5&amp;bdt=2302&amp;idt=780&amp;shv=r20201029&amp;cbv=r20190131&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;prev_fmts=263x250&amp;nras=1&amp;correlator=8449243589666&amp;frm=20&amp;pv=1&amp;ga_vid=325180315.1604507560&amp;ga_sid=1604507560&amp;ga_hid=798235262&amp;ga_fc=0&amp;iag=0&amp;icsg=8926120&amp;dssz=31&amp;mdo=0&amp;mso=0&amp;u_tz=-720&amp;u_his=1&amp;u_java=0&amp;u_h=768&amp;u_w=1366&amp;u_ah=728&amp;u_aw=1366&amp;u_cd=24&amp;u_nplug=3&amp;u_nmime=4&amp;adx=-12245933&amp;ady=-12245933&amp;biw=1349&amp;bih=657&amp;scr_x=0&amp;scr_y=0&amp;eid=44726949&amp;oid=3&amp;pvsid=498645947998733&amp;pem=559&amp;ref=https%3A%2F%2Fwww.pinterest.com%2F&amp;rx=0&amp;eae=2&amp;fc=896&amp;brdim=0%2C0%2C0%2C0%2C1366%2C0%2C1366%2C728%2C1366%2C657&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=8192&amp;bc=31&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;dtd=788"
+                        marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"
+                        allowfullscreen="true" data-google-container-id="a!1"
+                        data-load-complete="true"></iframe></ins></ins></ins><iframe
+            id="google_osd_static_frame_9085053776495" name="google_osd_static_frame"
+            style="display: none; width: 0px; height: 0px;"></iframe><iframe scrolling="no" frameborder="0"
+            allowtransparency="true"
+            src="https://platform.twitter.com/widgets/widget_iframe.96fd96193cc66c3e11d4c5e4c7c7ec97.html?origin=https%3A%2F%2Fwww.epicpxls.com"
+            title="Twitter settings iframe" style="display: none;"></iframe><iframe id="rufous-sandbox" scrolling="no"
+            frameborder="0" allowtransparency="true" allowfullscreen="true"
+            style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;"
+            title="Twitter analytics iframe"></iframe>
+        <div class="crisp-client">
+            <div class="cc-l3zb">
+                <div class="cc-lcor">
+                    <style type="text/css">
+                        .crisp-client .cc-kv6t .cc-6zjc,
+                        .crisp-client .cc-kv6t .cc-1mk2:hover {
+                            color: #FFFFFF !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-10m9,
+                        .crisp-client .cc-kv6t .cc-17tf:hover {
+                            color: #001797 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-dkda,
+                        .crisp-client .cc-kv6t .cc-r4ie:hover {
+                            color: #112BB9 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-jq4y,
+                        .crisp-client .cc-kv6t .cc-5lan:hover {
+                            color: #2943D1 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-k5w4 {
+                            background-color: #FFFFFF !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-5ekd {
+                            background-color: #001797 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-16jc {
+                            background-color: #1732C4 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-1ada,
+                        .crisp-client .cc-kv6t .cc-ew5j:before,
+                        .crisp-client .cc-kv6t .cc-ew5j:after {
+                            background-color: #2943D1 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-y5jx {
+                            background-color: #F5F5FB !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-y6ot,
+                        .crisp-client .cc-kv6t .cc-183m:hover {
+                            background-color: #F9F9F9 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-1ybb {
+                            background-image: linear-gradient(125deg, #2943D1 -10%, #001797 100%) !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-ofgq,
+                        .crisp-client .cc-kv6t .cc-fg2d:hover {
+                            border-color: #FFFFFF !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-2ydi {
+                            border-color: rgba(0, 23, 151, 0.175) !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-1aev,
+                        .crisp-client .cc-kv6t .cc-2hzo:hover,
+                        .crisp-client .cc-kv6t .cc-18sf:before,
+                        .crisp-client .cc-kv6t .cc-18sf:after {
+                            border-color: #2943D1 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-1nph {
+                            border-color: rgba(41, 67, 209, 0.15) !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-1o96 {
+                            border-top-color: #2943D1 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-ve3u,
+                        .crisp-client .cc-kv6t .cc-1nmg:hover {
+                            border-color: #F5F5FB !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-clw4::placeholder {
+                            color: #5D73EA !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-2n8m::placeholder {
+                            color: #5D73EA !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-3x4f,
+                        .crisp-client .cc-kv6t .cc-1afs:hover,
+                        .crisp-client .cc-kv6t .cc-3x4f:hover,
+                        .crisp-client .cc-kv6t .cc-1afs:active,
+                        .crisp-client .cc-kv6t .cc-3x4f:active,
+                        .crisp-client .cc-kv6t .cc-1c1d:hover .cc-1f87,
+                        .crisp-client .cc-kv6t .cc-1c1d .cc-1f87:active {
+                            background: #001797 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-4xbu,
+                        .crisp-client .cc-kv6t .cc-caj5:hover {
+                            background: #112BB9 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-4xbu:hover,
+                        .crisp-client .cc-kv6t .cc-caj5:active {
+                            background: #061FA7 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-4xbu:active {
+                            background: #001797 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-g73w:hover .cc-199t {
+                            background: #112BB9 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-g73w .cc-199t:active {
+                            background: #061FA7 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-vuur,
+                        .crisp-client .cc-kv6t .cc-7rgf[data-active="true"] {
+                            background: #2943D1 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-vuur:hover {
+                            background: #1732C4 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-vuur:active {
+                            background: #112BB9 !important;
+                        }
+
+                        .crisp-client .cc-kv6t .cc-1gmp::selection,
+                        .crisp-client .cc-kv6t .cc-1gmp *::selection {
+                            background-color: #DDE2FF !important;
+                        }
+                    </style>
+                </div>
+                <div class="cc-1kny">
+                    <style type="text/css">
+                        .crisp-client .cc-kv6t {
+                            z-index: 1000000;
+                        }
+                    </style>
+                </div>
+            </div>
+            <div id="crisp-chatbox" lang="en" dir="ltr" translate="no" data-blocked="false" data-lock-maximized="false"
+                data-last-operator-face="false" data-availability-tooltip="false" data-hide-vacation="false"
+                data-hide-on-away="false" data-hide-on-mobile="false" data-position-reverse="false"
+                data-full-view="false" data-small-view="false" data-large-view="false" data-availability="online"
+                data-is-activity-ongoing="false" data-was-availability-online="true" data-has-local-messages="false"
+                class="cc-kv6t">
+                <div class="cc-1xry cc-1gmp"><a data-maximized="false" data-is-failure="false" href="#!" class="cc-unoo"
+                        data-cshid="a9a3650b-68f1-91bc-319c-6be1c96a4f20"><span class="cc-1c9v"><span
+                                data-id="general_entice" data-with-helpdesk="false" data-is-concealed="false"
+                                class="cc-1bue"><span class="cc-1bcp"><span class="cc-1s28 cc-kgeu"><span
+                                            class="cc-tkyh"><span class="cc-1t9t"><span
+                                                    class="cc-g0ak cc-hy0f"></span><span data-has-avatar="true"
+                                                    class="cc-xc93"><span class="cc-17df"><span
+                                                            class="cc-od26 cc-151q">Ask me your questions</span><span
+                                                            data-id="online" class="cc-1rau cc-kgeu">Support is
+                                                            online.</span><span data-id="away"
+                                                            class="cc-1rau cc-kgeu">Support is away.</span></span><span
+                                                        class="cc-56dg"><span class="cc-8exe cc-he6y"><span
+                                                                style="background-image: url('https://image.crisp.chat/process/thumbnail/?url=https%3A%2F%2Fstorage.crisp.chat%2Fusers%2Favatar%2Foperator%2Fd85416b2-7914-433e-98ec-8f5df71e6586%2Fc86934b9-87c4-44f8-ac9d-d9b8ff06e28a.jpeg&amp;width=240&amp;height=240&amp;1561063222088') !important;"
+                                                                class="cc-1h5w cc-wsm4"></span></span></span></span></span></span><span
+                                            data-when="online" class="cc-rzi5"><span class="cc-1yk0 cc-183m"><span
+                                                    class="cc-1viy"><span class="cc-16up cc-jq4y cc-151q">Chat with
+                                                        EpicPxls
+                                                        Team</span></span></span></span><span data-when="away"
+                                            class="cc-rzi5"><span class="cc-1yk0 cc-183m"><span class="cc-1viy"><span
+                                                        class="cc-16up cc-jq4y cc-151q">Chat with EpicPxls
+                                                        Team</span></span></span></span></span></span></span></span><span
+                            class="cc-7doi cc-1ada"><span data-id="chat_closed" class="cc-1iv2"><span
+                                    class="cc-1yxw"><span class="cc-16qx cc-1eqr"></span></span><span
+                                    data-is-ongoing="false" class="cc-15mo"></span></span></span></a></div>
+            </div>
+        </div>
+        <div>
+            <div class="modal fade and carousel in" data-interval="false" data-keyboard="false" data-ride="carousel"
+                id="lightbox" tabindex="-1" style="display: block; padding-right: 17px;"><a aria-hidden="true"
+                    class="close-carousel" data-dismiss="modal" href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 10 10" width="20px" height="20px">
+                        <path
+                            d="M5.7 5L9.9.8c.2-.2.2-.5 0-.7-.2-.1-.5-.1-.7 0L5 4.3.8.1C.6-.1.3 0 .1.2 0 .3 0 .6.1.8L4.3 5 .1 9.2c-.2.2-.2.5 0 .7.2.2.5.2.6 0L5 5.7l4.2 4.2c.2.2.5.2.7 0 .2-.2.2-.5 0-.6L5.7 5z">
+                        </path>
+                    </svg>
+                </a>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <ol class="carousel-indicators">
+                                <li data-slide-to="0" data-target="#lightbox"></li>
+                                <li class="active" data-slide-to="1" data-target="#lightbox"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item "><img alt="Doutss Landing Page" itemprop="image"
+                                        src="https://items.epicpxls.com/uploads/photo/b3fc38b139189664cfba1c8d6200145b.png">
+                                </div>
+                                <div class="item active"><img alt="Doutss Landing Page" itemprop="image"
+                                        src="https://items.epicpxls.com/uploads/photo/b990c466580ab98d2e166c23c3bb58c1.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><a class="left carousel-control" data-slide="prev" href="#lightbox" role="button"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M20 40C8.954 40 0 31.046 0 20S8.954 0 20 0s20 8.954 20 20-8.954 20-20 20zm0-38C10.059 2 2 10.059 2 20s8.059 18 18 18 18-8.059 18-18S29.941 2 20 2zm-.003 23.666l-1.331 1.33-6.662-6.662v-.669l6.662-6.662 1.331 1.331L15.331 19H28v2H15.331l4.666 4.666z">
+                        </path>
+                    </svg>
+                </a><a class="right carousel-control" data-slide="next" href="#lightbox" role="button"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M20 0c11.046 0 20 8.954 20 20s-8.954 20-20 20S0 31.046 0 20 8.954 0 20 0zm0 38c9.941 0 18-8.059 18-18S29.941 2 20 2 2 10.059 2 20s8.059 18 18 18zm.003-23.666l1.331-1.33 6.662 6.662v.669l-6.662 6.662-1.331-1.33L24.669 21H12v-2h12.669l-4.666-4.666z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="modal-backdrop loader fade in"></div>
+</body>
+
+</html>

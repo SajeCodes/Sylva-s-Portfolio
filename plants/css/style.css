@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* body{
+background-image: url(img/pl.png);
+background-attachment: fixed;
+background-size: cover;
+background-repeat: no-repeat;
+} */
+.text{
+    color: black;
+    font-size: 50px;
+    font-family: 'Trebuchet MS';
+    font-weight: bold;
+    
+}
+.logo-2{
+text-align: center;
+font-family: serif;
+font-size: 20px;
+font-weight: bold;
+}
+h1 span{
+font-family: italic;
+font-size: 10px;
+}
+
+.aka{
+    color: black;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: lighter;
+    font-size: 20px !important;
+}
+.lorem{
+    color: black;
+    font-family: cursive;
+    font-size: medium;
+}
+.pedia{
+    color: grey;
+}
+.btn{
+    background-color: green !important;
+    width: 80px !important;
+    
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    outline: none !important;
+    color: white !important;
+   
+}
+.btn :hover{
+    color: gray;
+transition: 1s ease-in-out;
+}
+.btn-1{
+    background-color: gray !important;
+    width: 80px !important;
+   
+    border-top-right-radius: 5px;
+    border: 1px;
+    outline: none !important;
+    color: white !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    
+}
+.foot{
+   background-color: rgb(245, 166, 21);
+  padding: 10px 0px 10px 0px;
+  width: 27% !important;
+  height: 70px;
+  outline: none;
+  color: white;
+  border: none;
+
+}
+.footer-section{
+    position: relative;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: 100% !important;
+    font-weight: bold;
+    font-family: cursive;
+}.sylv{
+    font-family: Georgia;
+    color: teal;
+    
+}
+.arrow{
+    position: absolute;
+    top: 50%;
+    left: 90%;
+  }
+  
+  .arrow-2{
+    position: absolute;
+    top: 50%;
+    left: 92%;
+  }
